@@ -16,11 +16,11 @@
 
 <div class={menuState === 'open' ? 'navbar-content visible' : 'navbar-content closed'}>
 	<i on:click={() => (menuState = 'closed')} class="bi bi-x-circle-fill" />
-	<ul>
+	<div class="navbar-link-container">
 		{#each navLinks as link}
-			<li href={link.link} class="navbar-link">{link.displayText}</li>
+			<div href={link.link} class="navbar-link">{link.displayText}</div>
 		{/each}
-	</ul>
+	</div>
 </div>
 
 <style>
@@ -113,16 +113,10 @@
 		height: 100vh;
 	}
 
-	ul {
+	.navbar-link-container {
 		justify-content: center;
 		list-style-type: none;
-		margin: 0;
-		padding: 0;
 		text-align: center;
-	}
-
-	li:not(:last-child) {
-		margin-bottom: 1rem;
 	}
 
 	.navbar-link {
@@ -134,6 +128,10 @@
 		background-position: 100% 100%, 0 100%;
 		background-repeat: no-repeat;
 		transition: background-size 400ms ease;
+	}
+
+	.navbar-link:not(:last-child) {
+		margin-bottom: 0.5rem;
 	}
 	.navbar-link:hover,
 	.navbar-link:focus {
